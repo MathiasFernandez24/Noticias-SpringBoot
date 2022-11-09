@@ -13,11 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class NoticiaService {
 
+     
+    
     @Autowired
     private NoticiaRepositorio noticiarepositorio;
 
     @Transactional                                //--> ver funcionamiento
-    private void crearNoticia(String titulo, String cuerpo, String foto) throws Exception {
+    public void crearNoticia(String titulo, String cuerpo, String foto) throws Exception {
         validar(titulo, cuerpo, foto);
         Noticia noticia = new Noticia();
         noticia.setTitulo(titulo);
@@ -26,7 +28,7 @@ public class NoticiaService {
         noticiarepositorio.save(noticia);
     }
     @Transactional
-    private void modificarNoticia(String id, String titulo, String cuerpo, String foto) throws Exception {
+    public void modificarNoticia(String id, String titulo, String cuerpo, String foto) throws Exception {
         validar(titulo, cuerpo, foto);
         Noticia noticia = new Noticia();
         noticia = noticiarepositorio.findById(id).get();
@@ -36,7 +38,7 @@ public class NoticiaService {
         noticiarepositorio.save(noticia);
     }
     
-    private Noticia consultaNoticia(String id) {
+    public Noticia consultaNoticia(String id) {
         if (id == null || id.isEmpty()) {
         } else {
             Noticia noticia = new Noticia();
@@ -46,17 +48,17 @@ public class NoticiaService {
         return null;
     }
 
-    private List<Noticia> consultaNoticiaPorTitulo(String palabraABuscar) {
-        if (palabraABuscar == null || palabraABuscar.isEmpty()) {
-        } else {
-            List<Noticia> listaNoticias = noticiarepositorio.buscarNoticiaPorTitulo(palabraABuscar);
-            return listaNoticias;
-        }
-        return null;
-    }
+//    public List<Noticia> consultaNoticiaPorTitulo(String palabraABuscar) {
+//        if (palabraABuscar == null || palabraABuscar.isEmpty()) {
+//        } else {
+//            List<Noticia> listaNoticias = noticiarepositorio.buscarNoticiaPorTitulo(palabraABuscar);
+//            return listaNoticias;
+//        }
+//        return null;
+//    }
 
     @Transactional
-    private void eliminarNoticia(String id) {
+    public void eliminarNoticia(String id) {
         if (id == null || id.isEmpty()) {
         } else {
             Noticia noticia = new Noticia();
@@ -72,9 +74,3 @@ public class NoticiaService {
     }
 
 }
-
-// private String id;
-//
-//    private String titulo;
-//    private String cuerpo;
-//    private String foto;
