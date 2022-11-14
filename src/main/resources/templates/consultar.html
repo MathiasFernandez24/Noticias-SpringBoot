@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
@@ -12,6 +12,43 @@ and open the template in the editor.
     </head>
     <body>
         <div>consultar porfi</div>
+
+        <table border=1>
+
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Cuerpo</th>
+                    <th>Foto</th>
+                    <th>Id</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody >
+                <tr th:each="noticia:${listaNoticias}">
+                    <td th:text="${noticia.titulo}"></td>
+                    <td th:text="${noticia.cuerpo}"></td>
+                    <td th:text="${noticia.foto}"></td>
+                    <td th:text="${noticia.id}"></td>
+                    <td>
+                        <button>
+                            <a th:href="@{/consultar/eliminar/__${noticia.id}__}">
+                                Eliminar
+                            </a>
+                        </button>
+                    </td>
+                    <td>
+                        <button>
+                            <a th:href="@{/consultar/modificar/__${noticia.id}__}">
+                                Modificar
+                            </a>
+                        </button>
+                    </td>
+                </tr>  
+            </tbody>
+        </table>
+
         <button>     
             <a href="/">Volver</a>
         </button>

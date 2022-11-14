@@ -13,8 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class NoticiaService {
 
-     
-    
     @Autowired
     private NoticiaRepositorio noticiarepositorio;
 
@@ -27,6 +25,7 @@ public class NoticiaService {
         noticia.setFoto(foto);
         noticiarepositorio.save(noticia);
     }
+
     @Transactional
     public void modificarNoticia(String id, String titulo, String cuerpo, String foto) throws Exception {
         validar(titulo, cuerpo, foto);
@@ -37,7 +36,13 @@ public class NoticiaService {
         noticia.setFoto(foto);
         noticiarepositorio.save(noticia);
     }
-    
+
+    public List<Noticia> listarNoticias() {
+        List<Noticia> listilla = noticiarepositorio.findAll();
+        System.out.println(listilla);
+        return listilla;
+    }
+
     public Noticia consultaNoticia(String id) {
         if (id == null || id.isEmpty()) {
         } else {
@@ -56,14 +61,14 @@ public class NoticiaService {
 //        }
 //        return null;
 //    }
-
     @Transactional
     public void eliminarNoticia(String id) {
         if (id == null || id.isEmpty()) {
         } else {
             Noticia noticia = new Noticia();
             noticia = noticiarepositorio.findById(id).get();
-            noticiarepositorio.delete(noticia); // ---> Ver delete por id
+            System.out.println("ELIMINARRRR Service");
+            noticiarepositorio.deleteById(noticia.getId()); // ---> Ver delete por id
         }
     }
 

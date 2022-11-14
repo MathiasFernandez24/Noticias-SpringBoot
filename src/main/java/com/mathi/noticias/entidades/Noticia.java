@@ -25,7 +25,10 @@ public class Noticia {
 
     public Noticia() {
     }
-    
+
+    public String getId() {
+        return id;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -51,4 +54,10 @@ public class Noticia {
         this.foto = foto;
     }
 
+    @Override
+    public String toString() {
+        return "Noticia{" + "id=" + id + ", titulo=" + titulo + ", cuerpo=" + cuerpo + ", foto=" + foto + '}';
+    }
+
+    
 }

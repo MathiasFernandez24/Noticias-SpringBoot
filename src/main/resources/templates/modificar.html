@@ -4,14 +4,25 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>cmodifica porfi</div>
+        <p th:text="${id}"></p>
+        <form action="/consultar/modificar" method="POST">
+            <input hidden th:value="${id}" name="id">
+            <div>cmodifica porfi</div>
+            <input placeholder="Titulo" type="text" id="titulo" name="titulo" >
+            <br>
+            <input placeholder="Cuerpo" type="text" id="cuerpo" name="cuerpo" >
+            <br>
+            <input placeholder="Foto" type="text" id="foto" name="foto" >
+            <br>
+            <button type="submit"> Modificar </button>
+        </form>
         <button>     
             <a href="/">Volver</a>
         </button>
