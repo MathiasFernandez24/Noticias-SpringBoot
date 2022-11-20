@@ -28,6 +28,8 @@ public class NoticiaService {
 
     @Transactional
     public void modificarNoticia(String id, String titulo, String cuerpo, String foto) throws Exception {
+        System.out.println("CASI CASI");
+
         validar(titulo, cuerpo, foto);
         Noticia noticia = new Noticia();
         noticia = noticiarepositorio.findById(id).get();

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class NoticiaControlador {
 
+    
     @Autowired
     private NoticiaService noticiaService;
 
@@ -46,9 +47,10 @@ public class NoticiaControlador {
     }
 
     @PostMapping("/consultar/modificar")
-    public String modificarPost(@RequestParam String id, String titulo, String cuerpo, String foto) {
-
+    public String modificar(@RequestParam String id, String titulo, String cuerpo, String foto) {
+System.out.println("-------------1");
         try {
+            
             noticiaService.modificarNoticia(id, titulo, cuerpo, foto);
 
         } catch (Exception e) {

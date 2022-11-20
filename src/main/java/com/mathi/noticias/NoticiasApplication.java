@@ -1,6 +1,5 @@
 package com.mathi.noticias;
 
-import com.mathi.noticias.services.NoticiaService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
